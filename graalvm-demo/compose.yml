@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  graalvm-builder:
+    image: ubuntu:22.04
+    container_name: graalvm-builder
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/home/builder/project
+      - ./setup-graalvm-native-full.sh:/home/builder/setup-graalvm-native-full.sh
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /home/builder/project
+    command: [ "/bin/bash" ] 
